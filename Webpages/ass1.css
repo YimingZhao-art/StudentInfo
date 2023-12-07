@@ -1,0 +1,340 @@
+@media screen and (min-width: 1000px) {
+  body {
+    width: 80%;
+    min-width: 1000px;
+    margin: 0.5rem auto;
+  }
+}
+
+/* 1) */
+
+/* 2) */
+header {
+  font-family: Verdana;
+  background-color: #0099ff;
+  padding: 1rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: fix-end;
+  position: relative;
+  min-height: 80px;
+}
+
+header h1 {
+  color: white;
+  flex: 1;
+  margin: 0;
+  max-width: 50%;
+}
+
+header nav {
+  color: bisque;
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 2 columns */
+  justify-items: end; /* align items to the right */
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+}
+
+header ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: contents;
+}
+
+header nav li {
+  grid-column: span 1; /* span 1 column */
+}
+
+header nav a {
+  color: gold;
+  text-decoration: none; /* disable underline */
+  position: relative;
+}
+
+header nav a:hover::before,
+header nav a:hover::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: red;
+}
+
+header nav a:hover::before {
+  top: 0;
+}
+header nav a:hover::after {
+  bottom: 0;
+}
+
+header::after {
+  content: "";
+  display: block;
+  background: url("hku-cs-logo.png") no-repeat;
+  background-size: contain;
+  width: 200px;
+  height: 46.816px; /* in real ratio */
+  position: absolute;
+  top: 1px;
+  right: 1px;
+}
+
+/* 3) */
+article {
+  font-family: Arial;
+}
+
+/* 4) */
+table {
+  border-collapse: collapse; /* remove the space between cells */
+}
+
+table td,
+table th {
+  padding: 0.5rem;
+  border: 1px solid lightgray;
+}
+
+table th {
+  background-color: #0099ff;
+  font-size: 1.2em;
+  text-align: left;
+  color: white;
+}
+
+table tr td:first-child {
+  width: 100px;
+}
+
+/* 5) */
+/* contact 
+It is the only one html with 2 tables, 
+so I use nth-of-type(2) to select the second table
+*/
+article table:nth-of-type(2) {
+  margin-top: 2rem;
+}
+
+/* 6) */
+/* professionalism */
+h3:nth-of-type(2) + table tr td:first-child {
+  width: 150px;
+}
+
+h3:nth-of-type(2) + table tr td:nth-child(3) {
+  width: 80px;
+  text-align: center;
+}
+
+/* the direct child of article */
+/* since html us <br> to separate paragraphs, we can use p:first-of-type to select the first paragraph */
+article > p:first-of-type::first-line {
+  font-weight: bold;
+}
+
+article > p:nth-of-type(2)::first-line {
+  font-weight: bold;
+}
+
+/* 7) */
+/* index.html */
+/* choose the table directly after h2 */
+article h2 + table:only-of-type tr td:first-child {
+  vertical-align: top;
+}
+
+/* 8) */
+/* information.html */
+article h2 + nav {
+  background-color: #0099ff;
+  /* move to bottom of the webpage */
+  position: fixed;
+  bottom: 0;
+  width: 80%;
+  margin-bottom: 10px;
+}
+
+article h2 + nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  padding: 0;
+  margin: 0;
+}
+
+article h2 + nav li {
+  width: 300px;
+  margin: 15px;
+}
+
+article h2 + nav a {
+  color: yellow;
+}
+
+section:last-of-type {
+  margin-bottom: 300px;
+}
+
+section {
+  border: 0.5px solid lightgrey;
+  background-color: #f9f9fb;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  width: 95%;
+  margin-bottom: 10px;
+  border-radius: 20px / 50px;
+  display: block;
+  border: 1.5px dotted darkgray;
+}
+
+section:nth-child(even) {
+  margin-right: 0;
+  margin-left: auto;
+}
+
+section:nth-child(odd) {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+/* ----------------- */
+
+/* set for screen size smaller than 500px */
+@media screen and (max-width: 500px) {
+  /* 9) */
+  body {
+    margin: 0.5rem auto;
+    /* padding: 0; */
+    min-width: 0;
+    width: 100%;
+  }
+
+  /* 10) */
+  article {
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 95%;
+    max-width: 500px;
+  }
+
+  /* 11) */
+  header {
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+
+  header h1 {
+    font-size: 1.5rem;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+  }
+
+  header nav {
+    position: static;
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    justify-items: center;
+  }
+
+  header nav li {
+    list-style: none;
+  }
+
+  header nav li a {
+    text-align: center;
+    display: block;
+  }
+
+  header::after {
+    display: none; /* hide the logo */
+  }
+
+  /* 12) */
+  /* information.html */
+  article h2 + nav {
+    background-color: #0099ff;
+    /* move to bottom of the webpage */
+    position: fixed;
+    width: inherit;
+    max-width: inherit;
+    bottom: 0;
+    margin-bottom: 0px;
+  }
+
+  article h2 + nav a {
+    font-size: 0.9em;
+    color: gold;
+  }
+
+  article h2 + nav li {
+    margin: 3px;
+    min-width: 250px;
+    width: auto;
+  }
+
+  section {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: auto;
+    display: block;
+    box-sizing: border-box;
+    border-radius: 20px;
+    /* use dashline border */
+    
+  }
+
+  /* 13) */
+  /* index.html */
+  article h2 + table:only-of-type th {
+    display: none;
+  }
+
+  article h2 + table:only-of-type {
+    margin-bottom: 10px;
+  }
+
+  article h2 + table:only-of-type,
+  article h2 + table:only-of-type tbody,
+  article h2 + table:only-of-type tr,
+  article h2 + table:only-of-type td {
+    display: block;
+    width: auto;
+    word-wrap: break-word; /* break the word if it is too long */
+    word-break: break-all; /* there is a long link in the table, so I use word-break to break it */
+  }
+
+  article h2 + table:only-of-type td {
+    border-left: 5px solid darkgray;
+    border-right: 5px solid darkgray;
+  }
+
+  article h2 + table:only-of-type td:nth-of-type(odd) {
+    border-top: 5px solid darkgray;
+  }
+
+  article h2 + table:only-of-type td:nth-of-type(even) {
+    border-bottom: 5px solid darkgray;
+  }
+
+  article h2 + table:only-of-type td:nth-of-type(1) p::before {
+    content: "Date: ";
+    font-weight: bold;
+    display: inline;
+  }
+
+  article h2 + table:only-of-type td:nth-of-type(1) {
+    width: auto;
+  }
+}
